@@ -93,6 +93,7 @@ However, if you need to bypass the check, please update the `baseline.xml` by ru
 command in package root folder(i.e. package/app/Settings/)
 
 ```
+export ANDROID_LINT_JARS=$(gettop)/prebuilts/checkcolor/checkcolor.jar
 lint --check HardCodedColor --xml color-check-baseline.xml .
 ```
 

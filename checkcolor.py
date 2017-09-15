@@ -64,8 +64,8 @@ def RunCheckOnProject(root):
 
   try:
     baseline = os.path.join(root, LINT_BASELINE_FILENAME)
-    check = subprocess.Popen(['lint', '--check', 'HardCodedColor', '--baseline',
-                              baseline, '--exitcode', TMP_FOLDER],
+    check = subprocess.Popen(['lint', '--check', 'HardCodedColor', '--disable', 'LintError',
+                              '--baseline', baseline, '--exitcode', TMP_FOLDER],
                              stdout=subprocess.PIPE, env=checkcolor_env)
     stdout, _ = check.communicate()
     exitcode = check.returncode
