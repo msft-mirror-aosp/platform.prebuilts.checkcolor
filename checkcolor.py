@@ -72,6 +72,9 @@ def RunCheckOnProject(root):
   except OSError as e:
     if e.errno == errno.ENOENT:
       print 'Error in color lint check'
+      if not os.environ.get('ANDROID_BUILD_TOP'):
+        print 'Try setting up your environment first:'
+        print '    source build/envsetup.sh && lunch <target>'
       sys.exit(1)
 
   return (exitcode, stdout)
