@@ -18,6 +18,8 @@
 
 """Script used by developers to run hardcoded color check."""
 
+from __future__ import print_function
+
 import argparse
 import errno
 import os
@@ -71,10 +73,10 @@ def RunCheckOnProject(root):
     exitcode = check.returncode
   except OSError as e:
     if e.errno == errno.ENOENT:
-      print 'Error in color lint check'
+      print('Error in color lint check')
       if not os.environ.get('ANDROID_BUILD_TOP'):
-        print 'Try setting up your environment first:'
-        print '    source build/envsetup.sh && lunch <target>'
+        print('Try setting up your environment first:')
+        print('    source build/envsetup.sh && lunch <target>')
       sys.exit(1)
 
   return (exitcode, stdout)
@@ -91,10 +93,10 @@ def main():
     code, message = RunCheckOnProject(rootdir)
     if code != 0:
       exitcode = 1
-      print message
+      print(message)
 
   if exitcode == 1:
-    print 'Please check link for more info:', COLOR_CHECK_README_PATH
+    print('Please check link for more info:', COLOR_CHECK_README_PATH)
   sys.exit(exitcode)
 
 
